@@ -1,0 +1,17 @@
+ <div class="item item-divider item-divider-custom">
+   {{ ::"History" | translate:"listcheckin" }}
+ </div>
+
+<div class="item item-custom" ng-repeat="value in payout_data.history" ng-if="payout_data.history.length" >
+  <span class="item-note">
+   {{value.total_hours}}
+</span>
+  <h2>{{value.location_name}}</h2>
+  <p>{{value.date}}</p>
+  <p>{{value.starttime}} - {{value.endtime}}</p>
+  <p ng-if="value.note!=''">{{value.note}}  </p>
+</div>
+
+<div class="item item-custom" ng-if="!payout_data.history.length">
+   <p class="text-center">{{ ::"No Records found" | translate:"listcheckin" }}</p>
+</div>

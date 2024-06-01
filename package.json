@@ -1,0 +1,12 @@
+{
+  "name": "Listcheckin",
+  "description": "ListCheckIn, Manage check-in and Check-out for Shop, Events or disco!",
+  "type": "module",
+  "version": "1.5.0",
+  "dependencies": {
+    "system": {
+      "type": "SAE",
+      "version": "4.18.23"
+    }
+  }
+}

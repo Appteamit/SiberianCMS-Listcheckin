@@ -1,0 +1,52 @@
+<div class="card listcheckin-customer-box">
+    <div class="item item-custom remove-border text-center">
+  		 <h2 class="name-title">{{ ::"Welcome" | translate:"listcheckin" }} {{ customer.firstname }}</h2>
+        <p class="current_date">{{ currentDate() }}</p>
+      </div>		 
+</div>
+
+<div class="card listcheckin-check-in-out-box">
+
+    <div class="item item-custom remove-border text-center" ng-if="is_checked_in" >
+      <h2>{{ payout_data.locationInfo.name }}</h2>
+    </div>
+
+    <div class="item item-custom remove-border">
+  	    <div class="row check-in-out-tabs text-center" ng-if="is_checked_in" >
+            <div class="col check-in-out-clock check-in-out-hour">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.hours}}</span>
+                <p class="clock-title">{{ ::"Hour" | translate:"listcheckin" }}</p>
+            </div>
+            <div class="col check-in-out-clock check-in-out-min">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.minutes}}</span>
+                <p class="clock-title">{{ ::"Minute" | translate:"listcheckin" }}</p>
+            </div>
+            <div class="col check-in-out-clock check-in-out-second">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.seconds}}</span>
+                <p class="clock-title">{{ ::"Second" | translate:"listcheckin" }}</p>
+            </div>
+       </div>
+      <p class="checkedin-time text-center" ng-if="is_checked_in">{{ ::"Checked in at" | translate:"listcheckin" }} {{ payout_data.timetracking.starttime }}</p>
+      <p class="now-time text-center" ng-if="current_time!='' && !is_checked_in">{{ ::"Now is" | translate:"listcheckin" }} {{ current_time }}</p>
+   </div>
+
+   <div class="item item-custom remove-border">
+		 <div class="row check-in-out-buttons text-center">
+		 	<div class="col check-in-out-checkin" ng-if="!is_checked_in">
+			 	<button ng-click="showCheckInScanCamera()" class="button button-full icon-left check-in-out-button" ng-class="{'button-positive-custom' : is_checked_in == false, 'button-custom' : is_checked_in == true}">
+				   <i class="icon ion-qr-scanner"></i>  
+           {{ ::"Check In" | translate:"listcheckin" }}
+				</button>
+			</div>
+
+			<div class="col check-in-out-checkout" ng-if="is_checked_in" >
+			 	<button ng-click="showCheckOutScanCamera()" class="button button-full icon-left check-in-out-button" ng-class="{'button-positive-custom' : is_checked_in == true, 'button-custom' : is_checked_in == false}">
+				   <i class="icon ion-qr-scanner"></i>  
+           {{ ::"Check Out" | translate:"listcheckin" }}
+				</button>
+			</div>
+
+		 </div>
+   </div>	
+   	 
+</div>

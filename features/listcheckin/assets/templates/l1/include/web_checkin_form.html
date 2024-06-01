@@ -1,0 +1,51 @@
+     <div class="list card">
+          <div class="item item-custom item-body text-center">
+            <h2>{{ ::"Welcome to" | translate:"listcheckin" }} {{locationInfo.name}}</h2>
+            <p><i class="icon ion-ios-location"></i> {{locationInfo.address}}</p>
+          </div>
+      </div>
+
+     <div class="list card" ng-show="!is_checked_in_status" ng-if="payout_data.settings.qr_checkin_note!=''">
+         <div class="item item-divider item-divider-custom remove-border">
+             {{ ::"Information" | translate:"listcheckin" }}
+          </div>
+          <label class="item item-custom item-body remove-border" >
+            <p ng-bind-html="payout_data.settings.qr_checkin_note | trusted_html"></p>
+          </label> 
+     </div>
+
+      <div class="list card" ng-show="!is_checked_in_status" ng-if="payout_data.settings.required_phone_number || payout_data.settings.required_note || payout_data.settings.required_personal_id">
+       
+         <div class="item item-divider item-divider-custom ">
+             {{ ::"Please enter following details" | translate:"listcheckin" }}
+          </div>
+        
+          <label class="item item-custom item-input item-stacked-label" ng-if="payout_data.settings.required_phone_number">
+            <span class="input-label">{{ ::"Phone Number" | translate:"listcheckin" }}*</span>
+            <input type="text" ng-model="postValues.phone_number" placeholder='{{ ::"Enter a Phone Number" | translate:"listcheckin" }}'>
+          </label>
+
+          <label class="item item-custom item-input item-stacked-label" ng-if="payout_data.settings.required_personal_id">
+            <span class="input-label">{{ ::"Personal Id" | translate:"listcheckin" }}*</span>
+            <input type="text" ng-model="postValues.personal_id" placeholder='{{ ::"e.g. Passpost number etc.." | translate:"listcheckin" }}'>
+          </label>
+ 
+          <label class="item item-custom item-input item-stacked-label" ng-if="payout_data.settings.required_note">
+            <span class="input-label">{{ ::"Enter a Note" | translate:"listcheckin" }}</span>
+            <textarea ng-model="postValues.note"></textarea>
+          </label>
+      </div>
+    
+      <div class="list" ng-show="!is_checked_in_status">
+        <div class="item item-custom remove-border">
+           <button ng-click="checkInNow()" class="button button-full button-positive-custom">
+              {{ ::"Confirm" | translate:"listcheckin" }}
+          </button>
+        </div>            
+     </div>   
+
+      <div class="list" ng-show="is_checked_in_status">
+        <div class="item item-custom remove-border text-center">
+          <h2>{{ ::"Check-In Successfully!" | translate:"listcheckin" }}</h2>
+        </div>            
+     </div>   

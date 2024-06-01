@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <listcheckin_application_edit>
+        <views>
+            <content class="application_view_customization_features_edit_tabbareditor" template="application/customization/features/edit/tabbar_editor.phtml" />
+            <content_editor class="core_view_default" template="listcheckin/application/edit.phtml" />
+        </views>
+    </listcheckin_application_edit>
+    
+    <listcheckin_locations_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/locations/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_locations_list>
+
+    <listcheckin_locations_create>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/locations/create.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_locations_create>
+
+    <listcheckin_locations_edit>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Edit locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/locations/edit.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_locations_edit>
+
+     <listcheckin_locations_members>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Members</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/locations/members.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_locations_members>
+
+    <listcheckin_reports_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Reports</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/reports/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_reports_list>
+
+    <listcheckin_manager_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Managers</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/manager/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_manager_list>
+
+    <listcheckin_manager_create>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Create Manager</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="listcheckin/manager/create.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>listcheckin</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>listcheckin</code></header_menu>
+        </actions>
+    </listcheckin_manager_create>
+
+</layout>

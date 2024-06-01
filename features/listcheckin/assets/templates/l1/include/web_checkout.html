@@ -1,0 +1,30 @@
+<div class="card listcheckin-customer-box">
+    <div class="item item-custom remove-border text-center">
+  		 <h2 class="name-title">{{ ::"Welcome" | translate:"listcheckin" }} {{ customer.firstname }}</h2>
+        <p class="current_date">{{ currentDate() }}</p>
+      </div>		 
+</div>
+<div class="card listcheckin-check-in-out-box">
+
+    <div class="item item-custom remove-border text-center" ng-if="is_checked_in" >
+      <h2>{{ payout_data.locationInfo.name }}</h2>
+    </div>
+
+    <div class="item item-custom remove-border">
+     	<p class="checkedin-time text-center" ng-if="is_checked_in">{{ ::"Checked in at" | translate:"listcheckin" }} {{ payout_data.timetracking.starttime }}</p>
+    </div>
+
+   <div class="item item-custom remove-border">
+		 <div class="row check-in-out-buttons text-center">
+		   <div class="col check-in-out-checkout" ng-if="is_checked_in" >
+			 	<button ng-click="checkOutNow()" class="button button-full icon-left check-in-out-button" ng-class="{'button-positive-custom' : is_checked_in == true}">
+				   <i class="icon ion-qr-scanner"></i>  
+           {{ ::"Check Out" | translate:"listcheckin" }}
+				</button>
+			</div>
+
+		 </div>
+   </div>	
+
+   	 
+</div>

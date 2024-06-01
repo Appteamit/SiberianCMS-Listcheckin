@@ -1,0 +1,388 @@
+ <?php
+$value_id = (new Listcheckin_Model_Listcheckin())->getCurrentValueId();
+$locations = (new Listcheckin_Model_Locations())
+                ->findAllForApp($value_id);
+$settingsModel = (new Listcheckin_Model_Listcheckin())
+                                    ->find($value_id, "value_id");
+$sv =  $settingsModel->getData();
+$settings = ['check_in_history_enable' => (integer) $sv['check_in_history_enable'],
+            'required_note' => (boolean) $sv['required_note'],
+            'required_phone_number' => (boolean) $sv['required_phone_number'],
+            'qr_checkin_note' => (string) $sv['qr_checkin_note'],
+            'required_personal_id' => (boolean) $sv['required_personal_id'],
+            'is_checkout_enable' => (boolean) $sv['is_checkout_enable'],
+            'location_tracking' => (boolean) $sv['location_tracking']
+        ];
+ ?>
+
+ <div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo  p__("listcheckin", "Reports"); ?>
+                <a href="#"
+                   id="export_customer"
+                   class="color-blue btn sb-tour pull-right" style="margin-right:16px;">
+                    <?php echo  p__("listcheckin", "Export"); ?>
+                </a>
+                
+                </h3>
+               
+                  <div class="subcontent content-color container-fluid">
+                    <div class="form-group">
+                     <div class="col-md-12">
+                        <div id="row_filter_metrics" class="pull-right">
+                              <div class="col-md-4 col-sm-12 col-xs-12">
+                                   <select class="input-flat sb-tour dt-search color-blue" name="location_id" id="location_id" data-dynatable-query="location_id">
+                                <?php foreach ($locations as $location) { ?>
+                                    <option value="<?php echo $location->getId(); ?>"><?php echo $location->getName(); ?></option>         
+                                <?php } ?>
+                                </select>
+                               </div>
+                               <div class="col-md-1 col-sm-6 col-xs-6">
+                                    <label for="from"><?php echo  p__("listcheckin", "From"); ?></label>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6">
+                                    <input type="text" id="from" name="from" class="input-flat sb-tour dt-search" autocomplete="off" data-dynatable-query="from">
+                                </div>
+                                <div class="col-md-1 col-sm-6 col-xs-6">
+                                    <label for="to"><?php echo  p__("listcheckin", "To"); ?></label>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6">
+                                    <input type="text" id="to" name="to" class="input-flat sb-tour dt-search" autocomplete="off" data-dynatable-query="to">
+                                </div>
+                        </div>
+
+                            <table id="dynamic-customers"
+                                   class="table content-white-bkg sb-pager">
+                                <thead>
+                                    <tr class="border-grey">
+                                        <th data-dynatable-column="customer_id"
+                                            style="width: 5%;"><?php echo  p__("listcheckin", "ID"); ?></th>
+                                        <th data-dynatable-column="firstname"
+                                            style="width: 15%;"><?php echo  p__("listcheckin", "Name"); ?></th>
+                                        <th data-dynatable-column="email"
+                                            style="width: 20%;"><?php echo  p__("listcheckin", "Email"); ?></th>
+                                        <th data-dynatable-column="phone"
+                                            style="width: 10%;"><?php echo  p__("listcheckin", "Phone"); ?></th>
+                                       <th style="width: 15%;"><?php echo  p__("listcheckin", "Location"); ?></th>
+                                        <th data-dynatable-column="startdate"
+                                            style="width: 10%;"><?php echo  p__("listcheckin", "Start"); ?></th>
+                                        <th data-dynatable-column="enddate"
+                                            style="width: 10%;"><?php echo  p__("listcheckin", "End"); ?></th>
+                                       <th data-dynatable-column="totaltime"
+                                            style="width: 10%;"><?php echo  p__("listcheckin", "Total"); ?></th>
+                                        <th style="width: 5%;"
+                                            class="text-right"><?php echo p__("listcheckin","Action"); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css">
+<script type="text/javascript"
+        src="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.js"></script>
+
+<style type="text/css">
+    #dynamic-customers {
+        margin-top: 15px;
+    }
+</style>
+
+<script type="text/javascript">
+    var uriParams = {};
+    let rowTemplate = `
+    <tr class="dynarow">
+        <td>
+            <b>#(CUSTOMER_ID)</b>
+        </td>
+        <td>(NAME)</td>
+        <td>(EMAIL)</td>
+        <td>(PHONE)</td>
+        <td>(LOCATION)</td>
+        <td>(START) <a onclick="loadMap((STARTLATLONG))"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+        <td>(END) <a class="(ISHIDE)" onclick="loadMap((ENDLATLONG))"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+        <td>(TOTAL)</td>
+        <td>
+            <a href="/listcheckin/reports/delete-new/id/(TIMETRACKING_ID)"
+               class="btn btn-xs btn-danger delete-customer">
+               <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-xs btn-info note-customer (ISNOTEHIDE)" title="(NOTE)">
+              <i class="fa fa-info"></i>
+            </a>
+            <a class="btn btn-xs btn-info phone-customer (ISPHONEHIDE)" phone="(PHONE)" title="Phone Number">
+              <i class="fa fa-phone"></i>
+            </a>
+
+            <a href="/listcheckin/reports/checkout/id/(TIMETRACKING_ID)" class="btn btn-xs btn-warning checkout-customer (ISCHECKOUTHIDE)" title="Manual Check-Out">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+           
+        </td>
+    </tr>`;
+
+    function rowWriter(rowIndex, record, columns, cellWriter) {
+        var ishide = record.status == "1" ? 'hide' : '';
+        if(record.status == "2"){
+            var ishide = record.endlatlong == "0,0" ? 'hide' : '';
+            var isCheckouthide = 'hide';
+        }
+        var isNotehide = '';
+        if(record.note == ""){
+            var isNotehide =  'hide' ;
+        }
+
+        var isPhonehide = '';
+        if(record.phone_number == ""){
+            var isPhonehide =  'hide' ;
+        }
+
+        return rowTemplate
+            .replace(/\(CUSTOMER_ID\)/g, record.id)
+            .replace(/\(EMAIL\)/g, record.email)
+            .replace(/\(NAME\)/g, record.name)
+            .replace(/\(START\)/g, record.startdate)
+            .replace(/\(END\)/g, record.enddate)
+            .replace(/\(TOTAL\)/g, record.totaltime)
+            .replace(/\(STARTLATLONG\)/g, record.startlatlong)
+            .replace(/\(ENDLATLONG\)/g, record.endlatlong)
+            .replace(/\(ISHIDE\)/g, ishide )
+            .replace(/\(ISCHECKOUTHIDE\)/g, isCheckouthide )
+            .replace(/\(ISNOTEHIDE\)/g, isNotehide )
+            .replace(/\(ISPHONEHIDE\)/g, isPhonehide )
+            .replace(/\(PHONE\)/g, record.phone_number )
+            .replace(/\(LOCATION\)/g, record.location_name )
+            .replace(/\(NOTE\)/g, record.note )
+            .replace(/\(TIMETRACKING_ID\)/g, record.id )
+    }
+    $.dynatableSetup({
+        table: {
+            defaultColumnIdStyle: 'noStyle'
+        },
+        features: {
+            paginate: true,
+            sort: true,
+            pushState: true,
+            search: true,
+            recordCount: true,
+            perPageSelect: false,
+        },
+    });
+
+    let tableCustomers = $('#dynamic-customers');
+
+    tableCustomers.bind('dynatable:preinit', function(e, dynatable) {
+        dynatable.utility.textTransform.noStyle = function(text) {
+            return text;
+        };
+    });
+  
+    tableCustomers.bind('dynatable:init', function(e, dynatable) {
+            dynatable.queries.functions['to'] = function(r, val) {
+              return queryValue;
+            };  
+            dynatable.queries.functions['from'] = function(r, val) {
+              return queryValue;
+            }; 
+                    
+      });
+
+    tableCustomers.bind('dynatable:afterProcess', function (e, data) {
+        uriParams = data.queries;
+    });
+    
+
+    tableCustomers.bind('dynatable:push', function(e, dynatable) {
+          uriParams = dynatable.queries;   
+    });
+
+    // And on the table
+    tableCustomers.dynatable({
+        dataset: {
+            ajax: true,
+            ajaxUrl: '/listcheckin/reports/fetch-customers',
+            ajaxOnLoad: true,
+            records: [],
+            perPageDefault: 25
+        },
+        inputs: {
+            processingText: '<?php echo __jss("Loading ...") ?>',
+            searchPlaceholder: '<?php echo __jss("Search by customer, shop, phone number etc...") ?>',
+            recordCountText: '<?php echo __jss("Showing") ?> ',
+            filteredFrom: ' (<?php echo __jss("filtered from #TOTAL# total records") ?>)',
+            recordText: '<?php echo __jss("record") ?>',
+            recordTextPlural: '<?php echo __jss("records") ?>',
+            textOf: '<?php echo __jss("of") ?>',
+            textTo: '<?php echo __jss("to") ?>',
+            queries: $('.dt-search')
+        },
+        writers: {
+            _rowWriter: rowWriter
+        }
+    });
+
+    $(document).ready(function() {
+        if($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']) {
+            $.datepicker.setDefaults($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']);
+        } else {
+            $.datepicker.setDefaults($.datepicker.regional['en']);
+        }
+        $( "#from" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                onClose: function( selectedDate ) {
+                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                }
+            });
+
+            $( "#to" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                onClose: function( selectedDate ) {
+                    $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+                }
+            });
+       
+
+        let exportCsv = $('#export_customer');
+        exportCsv.off('click');
+        exportCsv.on('click', function () {
+            if (typeof uriParams === 'undefined') {
+                let uri = "<?php echo $this->getUrl('listcheckin/reports/export-csv'); ?>";
+                window.open(uri, '_blank');
+            }else{
+                 let uri = "<?php echo $this->getUrl('listcheckin/reports/export-csv'); ?>?"+jQuery.param( uriParams );
+                window.open(uri, '_blank');
+            }           
+        });
+
+     });
+
+   function loadMap(lat, long){
+
+        if(lat == 0 || long == 0){
+            alert('There is any latitude or longitude data that is blank.');
+            return true;
+        }
+
+        let params ='scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=-1000,top=-1000';
+        window.open('http://maps.google.com/maps?q='+lat+','+long, 'Location', params);
+    }
+
+
+    $(document).off("click", ".delete-customer");
+    $(document).on("click", ".delete-customer", function (e) {
+        e.preventDefault();
+        let deleteHref = $(this).attr("href");
+        swal({
+            title: '<?php echo __js('Confirmation', "'"); ?>',
+            text: '<?php echo __js('Are you sure you want to delete this time?', "'"); ?>',
+            showCancelButton: true,
+            confirmButtonColor: '#0099C7',
+            confirmButtonText: '<?php echo __js('Yes, delete!', "'"); ?>',
+            cancelButtonText: '<?php echo __js('No, go back', "'"); ?>',
+            buttons: true
+        }, function(value) {
+            if (!value) {
+                return false;
+            }
+
+            formget(deleteHref,
+                {},
+                function (data) {
+                    feature_form_success(data.message);
+
+                    // Reload only on success and when done!
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500)
+                },
+                function (data) {
+                    feature_form_error(JSON.parse(data.responseText).message);
+                },
+                false);
+        });
+    });
+
+    $(document).off("click", ".checkout-customer");
+    $(document).on("click", ".checkout-customer", function (e) {
+        e.preventDefault();
+        let deleteHref = $(this).attr("href");
+        swal({
+            title: '<?php echo __js('Confirmation', "'"); ?>',
+            text: '<?php echo __js('Are you sure you want to checkout this customer manually?', "'"); ?>',
+            showCancelButton: true,
+            confirmButtonColor: '#0099C7',
+            confirmButtonText: '<?php echo __js('Yes, Check-Out!', "'"); ?>',
+            cancelButtonText: '<?php echo __js('No, go back', "'"); ?>',
+            buttons: true
+        }, function(value) {
+            if (!value) {
+                return false;
+            }
+
+            formget(deleteHref,
+                {},
+                function (data) {
+                    feature_form_success(data.message);
+
+                    // Reload only on success and when done!
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500)
+                },
+                function (data) {
+                    feature_form_error(JSON.parse(data.responseText).message);
+                },
+                false);
+        });
+    });
+
+
+    $(document).off("click", ".note-customer");
+    $(document).on("click", ".note-customer", function (e) {
+        e.preventDefault();
+        let title = $(this).attr("title");
+        swal({
+            title: '<?php echo __js('Note', "'"); ?>',
+            text: title,
+            showCancelButton: false,
+         }, function(value) {
+            return false;
+        });
+    });
+
+    $(document).off("click", ".phone-customer");
+    $(document).on("click", ".phone-customer", function (e) {
+        e.preventDefault();
+        let title = $(this).attr("phone");
+        swal({
+            title: '<?php echo __js('Phone Number', "'"); ?>',
+            text: title,
+            showCancelButton: false,
+         }, function(value) {
+            return false;
+        });
+    });
+ 
+</script>
+
+<style type="text/css">
+    .dynatable-record-count{
+        bottom: 0px !important;
+    }
+</style>

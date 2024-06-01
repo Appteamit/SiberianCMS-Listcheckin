@@ -1,0 +1,40 @@
+{
+  "name": "Listcheckin",
+  "code": "listcheckin",
+  "version": "1.0.0",
+  "category": "social",
+  "model": "Listcheckin_Model_Listcheckin",
+  "desktop_uri": "listcheckin/application/",
+  "routes": [
+    {
+      "root": true,
+      "state": "listcheckin-home",
+      "controller": "ListcheckinController",
+      "url": "listcheckin/mobile_list/index/value_id/:value_id",
+      "template": "l1/home.html",
+      "cache": false
+    },
+    {
+      "state": "listcheckin-web-checkin",
+      "controller": "ListcheckinWebController",
+      "url": "listcheckin/mobile_list/index/value_id/:value_id/shop_id/:shop_id/type/:type",
+      "template": "l1/web/home.html",
+      "cache": false
+    }   
+  ],
+  "icons": [
+    "icons/listcheckin-flat.png"
+  ],
+  "files": [
+    "js/controllers/listcheckin.js",
+    "js/controllers/listcheckin-web.js",
+    "js/factory/listcheckin.js",
+    "js/factory/listcheckin-load.js",    
+    "scss/listcheckin.scss"
+  ],
+  "compile": true,
+  "use_account": true,
+  "only_once": true,
+  "on_start_factory": "ListcheckinLoad",
+  "load_on_start": true
+}

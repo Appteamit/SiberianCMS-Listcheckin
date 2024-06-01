@@ -1,0 +1,80 @@
+<ion-modal-view cache-view="false"
+                sb-page-background
+                class="listcheckin listcheckin-notes">
+
+    <ion-header-bar class="bar-custom">
+        <div class="buttons">
+            <button class="button button-clear"
+                    ng-click="closeScanCheckInModal()">
+                <i ng-class="backButtonIcon()"></i>
+            </button>
+        </div>
+     <h1 class="title">{{ ::"Almost Done" | translate:"listcheckin" }}</h1>
+ 
+  </ion-header-bar>
+  
+  <ion-content class="has-header" >         
+      
+      <div class="loader" ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+      </div>  
+    
+     <div class="list card">
+          <div class="item item-custom item-body text-center">
+            <h2>{{ ::"Welcome to" | translate:"listcheckin" }} {{locationInfo.name}}</h2>
+            <p><i class="icon ion-ios-location"></i> {{locationInfo.address}}</p>
+          </div>
+      </div>
+
+     <div class="list card" ng-if="payout_data.settings.qr_checkin_note!=''">
+         <div class="item item-divider item-divider-custom remove-border">
+             {{ ::"Information" | translate:"listcheckin" }}
+          </div>
+          <label class="item item-custom item-body remove-border" >
+            <p ng-bind-html="payout_data.settings.qr_checkin_note | trusted_html"></p>
+          </label> 
+     </div>
+
+      <div class="list" ng-if="payout_data.settings.required_phone_number || payout_data.settings.required_note || payout_data.settings.required_personal_id">
+       
+         <div class="item item-divider item-divider-custom remove-border">
+             {{ ::"Please enter following details" | translate:"listcheckin" }}
+          </div>
+        
+          <label class="item item-custom item-input item-stacked-label remove-border" ng-if="payout_data.settings.required_phone_number">
+            <span class="input-label">{{ ::"Phone Number" | translate:"listcheckin" }}*</span>
+            <input type="text" ng-model="postValues.phone_number" placeholder='{{ ::"Enter a Phone Number" | translate:"listcheckin" }}'>
+          </label>
+
+          <label class="item item-custom item-input item-stacked-label remove-border" ng-if="payout_data.settings.required_personal_id">
+            <span class="input-label">{{ ::"Personal Id" | translate:"listcheckin" }}*</span>
+            <input type="text" ng-model="postValues.personal_id" placeholder='{{ ::"e.g. Passpost number etc.." | translate:"listcheckin" }}'>
+          </label>
+ 
+          <label class="item item-custom item-input item-stacked-label" ng-if="payout_data.settings.required_note">
+            <span class="input-label">{{ ::"Enter a Note" | translate:"listcheckin" }}</span>
+            <textarea ng-model="postValues.note"></textarea>
+          </label>
+
+          <label class="item item-custom item-input item-select remove-border" ng-if="locationInfo.allow_more_member">
+          <div class="input-label">
+            {{ :: "Total Member" | translate:"listcheckin" }}<span>*</span>
+          </div>
+            <select ng-required="true" ng-value="{{postValues.total_member}}"  ng-model="postValues.total_member">
+            <option value="{{n}}" ng-value="{{n}}" ng-repeat="n in range(1, 10)">{{n}}</option>
+           </select>
+        </label>
+
+      </div>
+    
+      <div class="list">
+        <div class="item item-custom remove-border">
+           <button ng-click="checkInSubmit()" class="button button-full button-positive-custom">
+              {{ ::"Confirm" | translate:"listcheckin" }}
+          </button>
+        </div>            
+     </div>    
+
+  </ion-content>
+
+</ion-modal-view>

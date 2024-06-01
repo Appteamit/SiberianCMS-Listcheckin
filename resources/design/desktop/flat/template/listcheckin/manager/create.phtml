@@ -1,0 +1,130 @@
+<?php $location = $this->getLocations(); ?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo p__("listcheckin","Create a new Manager"); ?>
+               </h3>
+                  <div id="customer_forms" class="first-row-feature content-color container-fluid">
+                    <div id="customer_form_new">
+
+                        <form id="managerForm" action="<?php echo $this->getUrl('listcheckin/manager/save'); ?>" method="post" class="form-horizontal">
+                             
+                             <input type="hidden" name="location_id" id="location_id" value="<?php echo $location->getId(); ?>">
+                             <div class="form-group">
+                                <div class="col-md-6">
+
+                                     <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="email"><?php echo p__("listcheckin", 'Email'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="" class="required input-flat" name="email" id="email" />
+                                        </div>
+                                    </div>
+
+                                   <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="first_name"><?php echo p__("listcheckin", 'First Name'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="" class="required input-flat" name="firstname" id="first_name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="last_name"><?php echo p__("listcheckin", 'Last Name'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="" class="required input-flat" name="lastname" id="last_name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" id="password-input">
+                                        <div class="col-sm-4">
+                                            <label for="password"><?php echo p__("listcheckin", 'Password'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="" class="required input-flat" name="password" id="password" />
+                                        </div>
+                                    </div>
+
+                               </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    * <?php echo p__("listcheckin", 'Required fields'); ?>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-2 col-xs-12">
+                                    <a href="/listcheckin/manager/list/id/<?php echo $location->getId(); ?>" id="cancel_manager" class="color-blue btn sb-tour"><?php  echo p__("listcheckin", "Cancel"); ?></a>
+                                    <button id="sb-tour-save_user" type="submit" class="color-blue btn pull-right sb-tour"><?php echo p__("listcheckin", "Save"); ?></button>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $('#managerForm').submit(function() {
+        if($(this).valid()) {
+            reload(this, this.action, true, function(data) {
+                if(data.success) {
+                    window.location = $('#cancel_manager').attr( "href" );
+                }
+            });
+        }
+        return false;
+    });
+
+    function validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+    $("#email").on("change paste keyup", function() {
+           // $('#first_name').attr("disabled", true);
+           // $('#last_name').attr("disabled", true);
+           
+            if(validateEmail($(this).val())){
+                $.ajax({
+                  type: "POST",
+                  url: '/listcheckin/manager/check-email',
+                  dataType: "json",
+                  data: { email: $(this).val(), location_id: $('#location_id').val() },
+                  success: function(data) {
+
+                    if(data.is_exist){
+                        $('#first_name').val(data.firstname);                        
+                        $('#last_name').val(data.lastname);
+                        $('#password-input').hide();
+                    }else{
+                        $('#password-input').show();
+                    }
+                        
+                  },
+                  error: function() {
+                      feature_form_error("Something went wrong!");
+                  }
+              });
+          }else{
+                $('#first_name').val('');                        
+                $('#last_name').val('');
+                $('#password-input').show();
+          }     
+
+       });
+
+</script>

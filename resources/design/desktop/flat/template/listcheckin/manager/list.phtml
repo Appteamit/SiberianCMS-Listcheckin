@@ -1,0 +1,174 @@
+<?php $location = $this->getLocations(); ?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo  p__("listcheckin", "Managers of %s", $location->getName()); ?>
+
+                <a href="/listcheckin/locations/list"
+                class="color-blue btn sb-tour pull-right">
+                    <?php echo  p__("listcheckin", "Back"); ?>
+                </a>
+
+                <a href="/listcheckin/manager/create/id/<?php echo $location->getId(); ?>"
+                class="color-blue btn sb-tour pull-right" style="margin-right: 1%">
+                    <?php echo  p__("listcheckin", "Add a New Manager"); ?>
+                </a>
+
+                </h3>
+                <div class="subcontent content-color container-fluid">
+                    <div class="form-group">
+                     <div class="col-md-12">
+                          <table id="dynamic-locations"
+                                   class="table content-white-bkg sb-pager">
+                                <thead>
+                                    <tr class="border-grey">
+                                        <th data-dynatable-column="id"
+                                            style="width: 10%;"><?php echo  p__("listcheckin", "ID"); ?></th>
+                                        <th data-dynatable-column="first_name"
+                                            style="width: 30%;"><?php echo  p__("listcheckin", "Name"); ?></th>
+                                        <th style="width: 30%;"><?php echo  p__("listcheckin", "Email"); ?></th>
+                                       
+                                       <th><?php echo  p__("listcheckin", "Action"); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css">
+<script type="text/javascript"
+        src="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.js"></script>
+
+<style type="text/css">
+    #dynamic-leaves {
+        margin-top: 15px;
+    }
+</style>
+
+<script type="text/javascript">
+    var uriParams = {};
+    let rowTemplate = `
+    <tr class="dynarow">
+        <td>#(CUSTOMER_ID)</td>
+        <td>(NAME)</td>
+        <td>(EMAIL)</td>      
+        <td>        
+            <a href="/listcheckin/manager/remove-manager/location_id/(LOCATION_ID)/customer_id/(CUSTOMER_ID)"
+               class="btn btn-xs btn-danger remove-memeber">
+                <?php echo __js("REMOVE") ?>
+            </a>
+        </td>
+     </tr>`;
+
+    function rowWriter(rowIndex, record, columns, cellWriter) {
+        return rowTemplate
+            .replace(/\(CUSTOMER_ID\)/g, record.customer_id)
+            .replace(/\(LOCATION_ID\)/g, record.location_id)   
+            .replace(/\(NAME\)/g, record.name)            
+            .replace(/\(EMAIL\)/g, record.email);
+    }
+    $.dynatableSetup({
+        table: {
+            defaultColumnIdStyle: 'noStyle'
+        },
+        features: {
+            paginate: false,
+            sort: false,
+            pushState: false,
+            search: false,
+            recordCount: false,
+            perPageSelect: false,
+        },
+    });
+
+    let tableCustomers = $('#dynamic-locations');
+
+    tableCustomers.bind('dynatable:preinit', function(e, dynatable) {
+        dynatable.utility.textTransform.noStyle = function(text) {
+            return text;
+        };
+    });
+  
+ 
+    tableCustomers.bind('dynatable:afterProcess', function (e, data) {
+        uriParams = data.queries;
+    });
+    
+
+    tableCustomers.bind('dynatable:push', function(e, dynatable) {
+          uriParams = dynatable.queries;   
+    });
+
+    // And on the table attendance/leave/list
+    tableCustomers.dynatable({
+        dataset: {
+            ajax: true,
+            ajaxUrl: '/listcheckin/manager/fetch-managers/location_id/<?php echo $location->getId(); ?>',
+            ajaxOnLoad: true,
+            records: [],
+            perPageDefault: 100
+        },
+        inputs: {
+            processingText: '<?php echo __jss("Loading ...") ?>',
+            searchPlaceholder: '<?php echo __jss("Search by name ...") ?>',
+            recordCountText: '<?php echo __jss("Showing") ?> ',
+            filteredFrom: ' (<?php echo __jss("filtered from #TOTAL# total records") ?>)',
+            recordText: '<?php echo __jss("record") ?>',
+            recordTextPlural: '<?php echo __jss("records") ?>',
+            textOf: '<?php echo __jss("of") ?>',
+            textTo: '<?php echo __jss("to") ?>',
+            queries: $('.dt-search')
+        },
+        writers: {
+            _rowWriter: rowWriter
+        }
+    });
+
+
+   $(document).off("click", ".remove-memeber");
+    $(document).on("click", ".remove-memeber", function (e) {
+        e.preventDefault();
+        let deleteHref = $(this).attr("href");
+        swal({
+            title: '<?php echo P__("listcheckin", "Confirmation") ?>',
+            text: '<?php echo P__("listcheckin", "Are you sure you want to delete this manager?") ?>',
+            showCancelButton: true,
+            confirmButtonColor: '#0099C7',
+            confirmButtonText: '<?php echo P__("listcheckin", "Yes, delete!")?>',
+            cancelButtonText: '<?php echo P__("listcheckin", "No, go back") ?>',
+            buttons: true
+        }, function(value) {
+            if (!value) {
+                return false;
+            }
+
+            formget(deleteHref,
+                {},
+                function (data) {
+                    feature_form_success(data.message);
+                   // Reload only on success and when done!
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500)
+                },
+                function (data) {
+                    feature_form_error(JSON.parse(data.responseText).message);
+                },
+                false);
+        });
+    });
+ 
+</script>
+ 

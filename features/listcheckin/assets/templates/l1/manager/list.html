@@ -1,0 +1,26 @@
+<div class="item item-divider item-divider-custom">
+   {{ ::"Total" | translate:"listcheckin" }}
+   <span class="pull-right"><b>In</b> : {{countCheckIn}} | <b>Out</b> : {{countCheckOut}}</span>
+</div>
+
+<div class="item item-custom" ng-repeat="value in manager_history" ng-if="manager_history.length" >
+  <h2>{{value.firstname}} {{value.lastname}} <span class="pull-right">{{value.totaltime}}</span></h2>
+  <p>{{value.email}} <span ng-if="value.phone_number!=''">| {{value.phone_number}}</span>
+    <span class="pull-right" ng-if="value.total_member > 0" >({{value.total_member}} {{ ::"Member" | translate:"listcheckin" }})</span>
+  </p>
+  <p>{{value.startdate}} <span ng-if="value.enddate!='-'">- {{value.enddate}}</span>
+    <span ng-if="value.status == '1'" class="pull-right" ng-click="checkOutManual(value.id)"><i class="icon ion-log-out"></i></span>
+  </p>
+  <p ng-if="value.note!=''">{{value.note}}  </p>
+</div>
+
+<div class="item item-custom" ng-if="!manager_history.length">
+   <p class="text-center">{{ ::"No Records found" | translate:"listcheckin" }}</p>
+</div>
+
+<ion-infinite-scroll ng-if="can_load_older_booking_list"
+             on-infinite="loadMoreManagerBooking()"
+             immediate-check="false"
+             distance="50%"
+             class="spinner-custom">
+</ion-infinite-scroll>

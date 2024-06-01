@@ -1,0 +1,69 @@
+<?php $option_value = $this->getOptionValue(); 
+
+/*Settings Attendance*/
+$settingsFrom = new Listcheckin_Form_Listcheckin();
+$settingsFrom->setElementValueById('value_id', $option_value->getId()); 
+$listcheckin = (new Listcheckin_Model_Listcheckin())->find($option_value->getId(), "value_id")->setValueId($option_value->getId())->save();
+if($listcheckin->getId()) {
+   $attendanceFormData = $listcheckin->getData();
+   $settingsFrom->populate($attendanceFormData);
+}
+$settingsFrom->addNav("nav-add-listcheckin", "Submit", false);
+/*End settings listcheckin*/
+?>
+ 
+
+<div id="listcheckinlist" class="listcheckin">    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs parent-tab" role="tablist">
+        <li  class="active"  role="presentation">
+            <a href="#settings" aria-controls="access" role="tab" data-toggle="tab">
+               <i class="fa fa-cog" aria-hidden="true"></i>
+                <span class="hidden-xs access"><?php echo p__('listcheckin', "Settings") ?></span>
+            </a>
+        </li>
+  
+        <li role="presentation">
+            <a href="/listcheckin/locations/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('listcheckin', "Shop QR") ?></span>
+            </a>
+        </li>
+       <li role="presentation">
+            <a href="/listcheckin/reports/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('listcheckin', "Reports") ?></span>
+            </a>
+        </li>
+        
+    </ul> 
+
+    <div class="tab-content">
+
+       <!-- Layout settings tab -->
+        <div role="tabpanel" class="tab-pane active" id="settings">
+               <div class="feature-block-list  margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent" style="position: relative;"> <?php echo p__('listcheckin', 'Settings'); ?> 
+                    </h3>
+                </div>                
+                     <br>
+                    <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                        <?php echo $settingsFrom; ?>
+                    </div>
+                    <br>
+                <!-- Passcode background set -->
+                <div class="section">
+                    <?php echo $this->importBackground($option_value, false, false); ?>
+                </div>
+            </div>
+       </div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        bindForms("#listcheckinlist");
+     
+    });
+
+    
+</script>

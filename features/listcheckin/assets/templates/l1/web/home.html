@@ -1,0 +1,39 @@
+<ion-view sb-page-background
+          class="listcheckin listcheckin-web" cache-view="false">
+  <ion-nav-title> {{ page_title }}</ion-nav-title>
+ 
+ 
+  <ion-content class="has-header">
+
+      <div class="list" ng-if="!is_logged_in && !is_loading && is_valid">
+       <div class="item item-body item-custom listcheckin-login-button remove-border">
+          <button class="button button-block button-positive button-positive-custom" ng-click="login()" >
+            {{ ::"Click here to log-in" | translate:"listcheckin" }}
+          </button>
+       </div>
+      </div>
+
+      <div class="list" ng-if="!is_loading && !is_valid">
+       <div class="item item-body item-custom remove-border text-center">
+          <h2>{{error_message}}</h2>
+       </div>
+      </div>   
+
+      <div class="loader" ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+      </div>
+
+ 	   <ng-include ng-if="is_logged_in && !is_loading && is_valid && !is_checked_in && !is_checkout_success" src="'./features/listcheckin/assets/templates/l1/include/web_checkin_form.html'"></ng-include> 
+
+     <ng-include ng-if="is_logged_in && !is_loading && is_valid && is_checked_in && !is_checkout_success" src="'./features/listcheckin/assets/templates/l1/include/web_checkout.html'"></ng-include> 
+
+      <div class="list" ng-if="!is_loading && is_valid && is_checkout_success">
+       <div class="item item-body item-custom remove-border text-center">
+          <h2>{{ ::"Check-Out Successfully!" | translate:"listcheckin" }}</h2>
+          <p>{{ ::"Thank you. We hope your experience was awesome and we can’t wait to see you again soon." | translate:"listcheckin" }}</p>
+       </div>
+      </div> 
+
+ </ion-content>
+ 
+</ion-view>

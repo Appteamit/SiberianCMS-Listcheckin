@@ -1,0 +1,676 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-08-06T11:00:10+02:00\n"
+"PO-Revision-Date: 2020-08-06T11:00:10+02:00\n"
+"Language: \n"
+
+# GMT 1597083464.1001
+msgctxt "listcheckin"
+msgid "Listcheckin"
+msgstr "Listcheckin"
+
+# GMT 1597083464.1002
+#, mobile
+msgctxt "listcheckin"
+msgid "Listcheckin"
+msgstr "Listcheckin"
+
+# GMT 1597083464.1003
+msgctxt "listcheckin"
+msgid "Check In/Out History Display?"
+msgstr "Check In/Out History Display?"
+
+# GMT 1597083464.1004
+msgctxt "listcheckin"
+msgid "Check In/Out History Display?"
+msgstr "Check In/Out History Display?"
+
+# GMT 1597083464.1005
+msgctxt "listcheckin"
+msgid "Required Phone Number?"
+msgstr "Required Phone Number?"
+
+# GMT 1597083464.1006
+msgctxt "listcheckin"
+msgid "Required Customer Note?"
+msgstr "Required Customer Note?"
+
+# GMT 1597083464.1007
+msgctxt "listcheckin"
+msgid "QR check-In Message"
+msgstr "QR check-In Message"
+
+# GMT 1597083464.1008
+msgctxt "listcheckin"
+msgid "Settings"
+msgstr "Settings"
+
+# GMT 1597083464.1009
+msgctxt "listcheckin"
+msgid "Shop QR"
+msgstr "Shop QR"
+
+# GMT 1597083464.1010
+msgctxt "listcheckin"
+msgid "Reports"
+msgstr "Reports"
+
+# GMT 1597083464.1011
+msgctxt "listcheckin"
+msgid "Reports"
+msgstr "Reports"
+
+# GMT 1597083464.1012
+msgctxt "listcheckin"
+msgid "From"
+msgstr "From"
+
+# GMT 1597083464.1013
+msgctxt "listcheckin"
+msgid "To"
+msgstr "To"
+
+# GMT 1597083464.1014
+msgctxt "listcheckin"
+msgid "ID"
+msgstr "ID"
+
+# GMT 1597083464.1015
+msgctxt "listcheckin"
+msgid "Name"
+msgstr "Name"
+
+# GMT 1597083464.1016
+msgctxt "listcheckin"
+msgid "Email"
+msgstr "Email"
+
+# GMT 1597083464.1017
+msgctxt "listcheckin"
+msgid "Location"
+msgstr "Location"
+
+# GMT 1597083464.1018
+msgctxt "listcheckin"
+msgid "Start"
+msgstr "Start"
+
+# GMT 1597083464.1019
+msgctxt "listcheckin"
+msgid "End"
+msgstr "End"
+
+# GMT 1597083464.1020
+msgctxt "listcheckin"
+msgid "Total"
+msgstr "Total"
+
+# GMT 1597083464.1021
+msgctxt "listcheckin"
+msgid "Action"
+msgstr "Action"
+
+# GMT 1597083464.1022
+msgctxt "listcheckin"
+msgid "Search by customer, shop, phone number etc..."
+msgstr "Search by customer, shop, phone number etc..."
+
+# GMT 1597083464.1023
+msgctxt "listcheckin"
+msgid "Yes, delete!"
+msgstr "Yes, delete!"
+
+# GMT 1597083464.1024
+msgctxt "listcheckin"
+msgid "No, go back"
+msgstr "No, go back"
+
+# GMT 1597083464.1025
+msgctxt "listcheckin"
+msgid "Yes, Check-Out!"
+msgstr "Yes, Check-Out!"
+
+# GMT 1597083464.1026
+msgctxt "listcheckin"
+msgid "Are you sure you want to checkout this customer manually?"
+msgstr "Are you sure you want to checkout this customer manually?"
+
+# GMT 1597083464.1027
+msgctxt "listcheckin"
+msgid "Confirmation"
+msgstr "Confirmation"
+
+# GMT 1597083464.1028
+msgctxt "listcheckin"
+msgid "Are you sure you want to delete this time?"
+msgstr "Are you sure you want to delete this time?"
+
+# GMT 1597083464.1029
+msgctxt "listcheckin"
+msgid "Phone Number"
+msgstr "Phone Number"
+
+# GMT 1597083464.1030
+msgctxt "listcheckin"
+msgid "Create a new QR"
+msgstr "Create a new QR"
+
+# GMT 1597083464.1031
+msgctxt "listcheckin"
+msgid "Address"
+msgstr "Address"
+
+# GMT 1597083464.1032
+msgctxt "listcheckin"
+msgid "Status"
+msgstr "Status"
+
+# GMT 1597083464.1033
+msgctxt "listcheckin"
+msgid "Active"
+msgstr "Active"
+
+# GMT 1597083464.1034
+msgctxt "listcheckin"
+msgid "Scan Members"
+msgstr "Scan Members"
+
+# GMT 1597083464.1035
+msgctxt "listcheckin"
+msgid "All"
+msgstr "All"
+
+# GMT 1597083464.1036
+msgctxt "listcheckin"
+msgid "Restricted Members"
+msgstr "Restricted Members"
+
+# GMT 1597083464.1037
+msgctxt "listcheckin"
+msgid "Cancel"
+msgstr "Cancel"
+
+# GMT 1597083464.1038
+msgctxt "listcheckin"
+msgid "Save"
+msgstr "Save"
+
+# GMT 1597083464.1039
+msgctxt "listcheckin"
+msgid "Edit"
+msgstr "Edit"
+
+# GMT 1597083464.1040
+msgctxt "listcheckin"
+msgid "Manage Qr Code"
+msgstr "Manage Qr Code"
+
+# GMT 1597083464.1041
+msgctxt "listcheckin"
+msgid "Check-In"
+msgstr "Check-In"
+
+# GMT 1597083464.1042
+msgctxt "listcheckin"
+msgid "Check-Out"
+msgstr "Check-Out"
+
+# GMT 1597083464.1043
+msgctxt "listcheckin"
+msgid "Created At"
+msgstr "Created At"
+
+# GMT 1597083464.1044
+msgctxt "listcheckin"
+msgid "Members of %s"
+msgstr "Members of %s"
+
+# GMT 1597083464.1045
+msgctxt "listcheckin"
+msgid "Back"
+msgstr "Back"
+
+# GMT 1597083464.1046
+msgctxt "listcheckin"
+msgid "Search by name"
+msgstr "Search by name"
+
+# GMT 1597083464.1047
+msgctxt "listcheckin"
+msgid "Saved successfully"
+msgstr "Saved successfully"
+
+# GMT 1597083464.1048
+msgctxt "listcheckin"
+msgid "Info deleted saved"
+msgstr "Info deleted saved"
+
+# GMT 1597083464.1049
+msgctxt "listcheckin"
+msgid "Check-Out Successfully!"
+msgstr "Check-Out Successfully!"
+
+# GMT 1597083464.1050
+#, mobile
+msgctxt "listcheckin"
+msgid "Checked-In"
+msgstr "Checked-In"
+
+# GMT 1597083464.1051
+#, mobile
+msgctxt "listcheckin"
+msgid "Customer login required!"
+msgstr "Customer login required!"
+
+# GMT 1597083464.1052
+#, mobile
+msgctxt "listcheckin"
+msgid "This shop is not Available for Check-In!"
+msgstr "This shop is not Available for Check-In!"
+
+# GMT 1597083464.1053
+#, mobile
+msgctxt "listcheckin"
+msgid "Sorry you have not checked-In %s!"
+msgstr "Sorry you have not checked-In %s!"
+
+# GMT 1597083464.1054
+#, mobile
+msgctxt "listcheckin"
+msgid "You have already checked-In in %s!"
+msgstr "You have already checked-In in %s!"
+
+# GMT 1597083464.1055
+#, mobile
+msgctxt "listcheckin"
+msgid "Scan Successfully"
+msgstr "Scan Successfully"
+
+# GMT 1597083464.1056
+#, mobile
+msgctxt "listcheckin"
+msgid "You may not have the permission to check-In!"
+msgstr "You may not have the permission to check-In!"
+
+# GMT 1597083464.1057
+#, mobile
+msgctxt "listcheckin"
+msgid "Invalid QR code!"
+msgstr "Invalid QR code!"
+
+# GMT 1597083464.1058
+#, mobile
+msgctxt "listcheckin"
+msgid "Click here to log-in"
+msgstr "Click here to log-in"
+
+# GMT 1597083464.1059
+#, mobile
+msgctxt "listcheckin"
+msgid "Almost Done"
+msgstr "Almost Done"
+
+# GMT 1597083464.1060
+#, mobile
+msgctxt "listcheckin"
+msgid "Welcome to"
+msgstr "Welcome to"
+
+# GMT 1597083464.1061
+#, mobile
+msgctxt "listcheckin"
+msgid "Information"
+msgstr "Information"
+
+# GMT 1597083464.1062
+#, mobile
+msgctxt "listcheckin"
+msgid "Please enter following details"
+msgstr "Please enter following details"
+
+# GMT 1597083464.1063
+#, mobile
+msgctxt "listcheckin"
+msgid "Phone Number"
+msgstr "Phone Number"
+
+# GMT 1597083464.1064
+#, mobile
+msgctxt "listcheckin"
+msgid "Enter a Note"
+msgstr "Enter a Note"
+
+# GMT 1597083464.1065
+#, mobile
+msgctxt "listcheckin"
+msgid "Confirm"
+msgstr "Confirm"
+
+# GMT 1597083464.1066
+#, mobile
+msgctxt "listcheckin"
+msgid "Welcome"
+msgstr "Welcome"
+
+# GMT 1597083464.1067
+#, mobile
+msgctxt "listcheckin"
+msgid "Hour"
+msgstr "Hour"
+
+# GMT 1597083464.1068
+#, mobile
+msgctxt "listcheckin"
+msgid "Minute"
+msgstr "Minute"
+
+# GMT 1597083464.1069
+#, mobile
+msgctxt "listcheckin"
+msgid "Second"
+msgstr "Second"
+
+# GMT 1597083464.1070
+#, mobile
+msgctxt "listcheckin"
+msgid "Checked in at"
+msgstr "Checked in at"
+
+# GMT 1597083464.1071
+#, mobile
+msgctxt "listcheckin"
+msgid "Now is"
+msgstr "Now is"
+
+# GMT 1597083464.1072
+#, mobile
+msgctxt "listcheckin"
+msgid "Check In"
+msgstr "Check In"
+
+# GMT 1597083464.1073
+#, mobile
+msgctxt "listcheckin"
+msgid "Check Out"
+msgstr "Check Out"
+
+# GMT 1597083464.1074
+#, mobile
+msgctxt "listcheckin"
+msgid "History"
+msgstr "History"
+
+# GMT 1597083464.1075
+#, mobile
+msgctxt "listcheckin"
+msgid "No Records found"
+msgstr "No Records found"
+
+# GMT 1597083464.1076
+#, mobile
+msgctxt "listcheckin"
+msgid "Sun"
+msgstr "Sun"
+
+# GMT 1597083464.1077
+#, mobile
+msgctxt "listcheckin"
+msgid "Mon"
+msgstr "Mon"
+
+# GMT 1597083464.1078
+#, mobile
+msgctxt "listcheckin"
+msgid "Tue"
+msgstr "Tue"
+
+# GMT 1597083464.1079
+#, mobile
+msgctxt "listcheckin"
+msgid "Wed"
+msgstr "Wed"
+
+# GMT 1597083464.1080
+#, mobile
+msgctxt "listcheckin"
+msgid "Thu"
+msgstr "Thu"
+
+# GMT 1597083464.1081
+#, mobile
+msgctxt "listcheckin"
+msgid "Fri"
+msgstr "Fri"
+
+# GMT 1597083464.1082
+#, mobile
+msgctxt "listcheckin"
+msgid "Sat"
+msgstr "Sat"
+
+# GMT 1597083464.1083
+#, mobile
+msgctxt "listcheckin"
+msgid "Jan"
+msgstr "Jan"
+
+# GMT 1597083464.1084
+#, mobile
+msgctxt "listcheckin"
+msgid "Feb"
+msgstr "Feb"
+
+# GMT 1597083464.1085
+#, mobile
+msgctxt "listcheckin"
+msgid "Mar"
+msgstr "Mar"
+
+# GMT 1597083464.1086
+#, mobile
+msgctxt "listcheckin"
+msgid "Apr"
+msgstr "Apr"
+
+# GMT 1597083464.1087
+#, mobile
+msgctxt "listcheckin"
+msgid "May"
+msgstr "May"
+
+# GMT 1597083464.1088
+#, mobile
+msgctxt "listcheckin"
+msgid "Jun"
+msgstr "Jun"
+
+# GMT 1597083464.1089
+#, mobile
+msgctxt "listcheckin"
+msgid "Jul"
+msgstr "Jul"
+
+# GMT 1597083464.1090
+#, mobile
+msgctxt "listcheckin"
+msgid "Aug"
+msgstr "Aug"
+
+# GMT 1597083464.1091
+#, mobile
+msgctxt "listcheckin"
+msgid "Sep"
+msgstr "Sep"
+
+# GMT 1597083464.1092
+#, mobile
+msgctxt "listcheckin"
+msgid "Oct"
+msgstr "Oct"
+
+# GMT 1597083464.1093
+#, mobile
+msgctxt "listcheckin"
+msgid "Nov"
+msgstr "Nov"
+
+# GMT 1597083464.1094
+#, mobile
+msgctxt "listcheckin"
+msgid "Dec"
+msgstr "Dec"
+
+# GMT 1597083464.1095
+#, mobile
+msgctxt "listcheckin"
+msgid "Error"
+msgstr "Error"
+
+# GMT 1597083464.1096
+#, mobile
+msgctxt "listcheckin"
+msgid "OK"
+msgstr "OK"
+
+# GMT 1597083464.1097
+#, mobile
+msgctxt "listcheckin"
+msgid "Unreadable QRCode, sorry"
+msgstr "Unreadable QRCode, sorry"
+
+# GMT 1597083464.1098
+#, mobile
+msgctxt "listcheckin"
+msgid "Invalid code."
+msgstr "Invalid code."
+
+# GMT 1597083464.1099
+msgctxt "listcheckin"
+msgid "In"
+msgstr "In"
+
+# GMT 1597083464.1100
+#, mobile
+msgctxt "listcheckin"
+msgid "Please enter a Phone Number!"
+msgstr "Please enter a Phone Number!"
+
+# GMT 1597083464.1101
+#, mobile
+msgctxt "listcheckin"
+msgid "Please enter a Personal ID"
+msgstr "Please enter a Personal ID"
+
+# GMT 1597083464.1102
+#, mobile
+msgctxt "listcheckin"
+msgid "You have been Check-In successfully!"
+msgstr "You have been Check-In successfully!"
+
+# GMT 1597083464.1103
+#, mobile
+msgctxt "listcheckin"
+msgid "Please enter following details"
+msgstr "Please enter following details"
+
+# GMT 1597083464.1104
+#, mobile
+msgctxt "listcheckin"
+msgid "Personal Id"
+msgstr "Personal Id"
+
+# GMT 1597083464.1105
+#, mobile
+msgctxt "listcheckin"
+msgid "You have already checked in, Please scan a valid Check-out QR code!"
+msgstr "You have already checked in, Please scan a valid Check-out QR code!"
+
+# GMT 1597083464.1106
+#, mobile
+msgctxt "listcheckin"
+msgid "Please scan a valid QR code!"
+msgstr "Please scan a valid QR code!"
+
+# GMT 1597083464.1107
+#, mobile
+msgctxt "listcheckin"
+msgid "Thank you"
+msgstr "Thank you"
+
+# GMT 1597083464.1108
+#, mobile
+msgctxt "listcheckin"
+msgid "Please scan the QR code!"
+msgstr "Please scan the QR code!"
+
+# GMT 1597083464.1109
+msgctxt "listcheckin"
+msgid "MEMBERS"
+msgstr "MEMBERS"
+
+# GMT 1597083464.2000
+msgctxt "listcheckin"
+msgid "EDIT"
+msgstr "EDIT"
+
+# GMT 1597083464.2001
+msgctxt "listcheckin"
+msgid "DELETE"
+msgstr "DELETE"
+
+# GMT 1597083464.2002
+msgctxt "listcheckin"
+msgid "MANAGERS"
+msgstr "MANAGERS"
+
+# GMT 1597083464.2003
+msgctxt "listcheckin"
+msgid "Members Scan"
+msgstr "Members Scan"
+
+# GMT 1597083464.2004
+msgctxt "listcheckin"
+msgid "Allow More than 1 Members"
+msgstr "Allow More than 1 Members"
+
+# GMT 1597083464.2005
+#, mobile
+msgctxt "listcheckin"
+msgid "Member"
+msgstr "Member"
+
+# GMT 1597083464.2006
+#, mobile
+msgctxt "listcheckin"
+msgid "Total"
+msgstr "Total"
+
+# GMT 1597083464.2007
+#, mobile
+msgctxt "listcheckin"
+msgid "Today"
+msgstr "Today"
+
+# GMT 1597083464.2008
+#, mobile
+msgctxt "listcheckin"
+msgid "Previous"
+msgstr "Previous"
+
+# GMT 1597083464.2009
+msgctxt "listcheckin"
+msgid "Required Personal Id?"
+msgstr "Required Personal Id?"
+
+# GMT 1597083464.2010
+#, mobile
+msgctxt "listcheckin"
+msgid "Total Member"
+msgstr "Total Member"
